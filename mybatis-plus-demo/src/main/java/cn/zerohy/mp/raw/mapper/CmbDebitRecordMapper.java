@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-01
+ * @since 2019-07-02
  */
 public interface CmbDebitRecordMapper extends BaseMapper<CmbDebitRecord> {
 

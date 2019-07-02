@@ -3,9 +3,8 @@ package cn.zerohy.mp.raw.entity;
 import cn.zerohy.mp.common.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDateTime;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import com.baomidou.mybatisplus.annotation.TableField;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -14,10 +13,13 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-01
+ * @since 2019-07-02
  */
 @Data
+@Builder
 @ToString(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("raw_wechat_record")
@@ -25,26 +27,37 @@ public class WechatRecord extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
+    @TableField("amount")
     private Long amount;
 
+    @TableField("memo")
     private String memo;
 
+    @TableField("now_status")
     private String nowStatus;
 
+    @TableField("order_num")
     private String orderNum;
 
+    @TableField("pay_type")
     private String payType;
 
+    @TableField("payment_type")
     private String paymentType;
 
+    @TableField("product")
     private String product;
 
+    @TableField("tarns_num")
     private String tarnsNum;
 
+    @TableField("trans_partner")
     private String transPartner;
 
+    @TableField("trans_time")
     private LocalDateTime transTime;
 
+    @TableField("trans_type")
     private String transType;
 
 

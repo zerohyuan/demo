@@ -3,8 +3,8 @@ package cn.zerohy.mp.raw.entity;
 import cn.zerohy.mp.common.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDate;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.baomidou.mybatisplus.annotation.TableField;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -13,9 +13,13 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-01
+ * @since 2019-07-02
  */
 @Data
+@Builder
+@ToString(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("raw_icbc_record")
@@ -23,30 +27,43 @@ public class IcbcRecord extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
+    @TableField("balance")
     private Long balance;
 
+    @TableField("banknote")
     private String banknote;
 
+    @TableField("bill_currency")
     private String billCurrency;
 
+    @TableField("bill_income")
     private Long billIncome;
 
+    @TableField("bill_payout")
     private Long billPayout;
 
+    @TableField("country")
     private String country;
 
+    @TableField("currency")
     private String currency;
 
+    @TableField("income")
     private Long income;
 
+    @TableField("other_party_name")
     private String otherPartyName;
 
+    @TableField("payout")
     private Long payout;
 
+    @TableField("places")
     private String places;
 
+    @TableField("summary")
     private String summary;
 
+    @TableField("trans_date")
     private LocalDate transDate;
 
 

@@ -46,31 +46,9 @@ public class MPGenerator {
     public static void main(String[] args) {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
-
-        // 全局配置
-        GlobalConfig gc = new GlobalConfig();
-        String projectPath = System.getProperty("user.dir");
-
-        gc.setOutputDir(projectPath + "/mybatis-plus-demo/src/main/java");
-        gc.setAuthor("hyuan");
-        gc.setOpen(false);
-        mpg.setGlobalConfig(gc);
-
-        // 数据源配置
-        DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/db_leopard?useUnicode=true&useSSL=false&characterEncoding=utf8");
-        // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("Lingheyuan");
-        mpg.setDataSource(dsc);
-
-        // 包配置
-        PackageConfig pc = new PackageConfig();
-//        pc.setModuleName(scanner("模块名"));
-        pc.setModuleName("raw");
-        pc.setParent("cn.zerohy.mp");
-        mpg.setPackageInfo(pc);
+        mpg.setGlobalConfig(getGlobalConfig());
+        mpg.setDataSource(getDataSourceConfig());
+        mpg.setPackageInfo(getPackageInfoConfig());
 
         // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
@@ -84,7 +62,7 @@ public class MPGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
-                return projectPath + "/mybatis-plus-demo/src/main/resources/mapper/" + pc.getModuleName()
+                return System.getProperty("user.dir") + "/mybatis-plus-demo/src/main/resources/mapper/" + mpg.getPackageInfo().getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
@@ -98,6 +76,9 @@ public class MPGenerator {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setSuperEntityClass("cn.zerohy.mp.common.BaseEntity");
         strategy.setEntityLombokModel(true);
+        strategy.setRestControllerStyle(true);
+        strategy.setEntityTableFieldAnnotationEnable(true);
+
         strategy.setSuperControllerClass("cn.zerohy.mp.common.BaseController");
 //        strategy.setInclude(scanner("表名"));
         strategy.setInclude("raw_abc_record",
@@ -112,10 +93,43 @@ public class MPGenerator {
                 "raw_wechat_record");
         strategy.setSuperEntityColumns("id","create_time","update_time");
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix(pc.getModuleName() + "_");
+        strategy.setTablePrefix(mpg.getPackageInfo().getModuleName() + "_");
         mpg.setStrategy(strategy);
         // 选择 freemarker 引擎需要指定如下加，注意 pom 依赖必须有！
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
+    }
+
+    private static PackageConfig getPackageInfoConfig() {
+        // 包配置
+        PackageConfig pc = new PackageConfig();
+//        pc.setModuleName(scanner("模块名"));
+        pc.setModuleName("raw");
+        pc.setParent("cn.zerohy.mp");
+        return pc;
+    }
+
+    private static DataSourceConfig getDataSourceConfig() {
+        // 数据源配置
+        DataSourceConfig dsc = new DataSourceConfig();
+        dsc.setUrl("jdbc:mysql://localhost:3306/db_leopard?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
+        dsc.setUsername("root");
+        dsc.setPassword("Lingheyuan");
+//        dsc.setTypeConvert()
+        return dsc;
+    }
+
+    private static GlobalConfig getGlobalConfig() {
+        // 全局配置
+        GlobalConfig gc = new GlobalConfig();
+        String projectPath = System.getProperty("user.dir");
+        gc.setFileOverride(true);
+        gc.setBaseResultMap(true);
+        gc.setBaseColumnList(true);
+        gc.setOutputDir(projectPath + "/mybatis-plus-demo/src/main/java");
+        gc.setAuthor("hyuan");
+        gc.setOpen(false);
+        return gc;
     }
 }

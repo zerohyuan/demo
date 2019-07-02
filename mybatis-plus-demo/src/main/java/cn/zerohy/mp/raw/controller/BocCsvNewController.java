@@ -3,7 +3,7 @@ package cn.zerohy.mp.raw.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 import cn.zerohy.mp.common.BaseController;
 
 /**
@@ -12,9 +12,9 @@ import cn.zerohy.mp.common.BaseController;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-01
+ * @since 2019-07-02
  */
-@Controller
+@RestController
 @RequestMapping("/raw/boc-csv-new")
 public class BocCsvNewController extends BaseController {
 

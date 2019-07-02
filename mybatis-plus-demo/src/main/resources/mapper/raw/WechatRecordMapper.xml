@@ -2,4 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.zerohy.mp.raw.mapper.WechatRecordMapper">
 
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.zerohy.mp.raw.entity.WechatRecord">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+        <result column="amount" property="amount" />
+        <result column="memo" property="memo" />
+        <result column="now_status" property="nowStatus" />
+        <result column="order_num" property="orderNum" />
+        <result column="pay_type" property="payType" />
+        <result column="payment_type" property="paymentType" />
+        <result column="product" property="product" />
+        <result column="tarns_num" property="tarnsNum" />
+        <result column="trans_partner" property="transPartner" />
+        <result column="trans_time" property="transTime" />
+        <result column="trans_type" property="transType" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        amount, memo, now_status, order_num, pay_type, payment_type, product, tarns_num, trans_partner, trans_time, trans_type
+    </sql>
+
 </mapper>

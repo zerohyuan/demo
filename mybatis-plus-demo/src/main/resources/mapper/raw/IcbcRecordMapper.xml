@@ -2,4 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.zerohy.mp.raw.mapper.IcbcRecordMapper">
 
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.zerohy.mp.raw.entity.IcbcRecord">
+    <result column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+        <result column="balance" property="balance" />
+        <result column="banknote" property="banknote" />
+        <result column="bill_currency" property="billCurrency" />
+        <result column="bill_income" property="billIncome" />
+        <result column="bill_payout" property="billPayout" />
+        <result column="country" property="country" />
+        <result column="currency" property="currency" />
+        <result column="income" property="income" />
+        <result column="other_party_name" property="otherPartyName" />
+        <result column="payout" property="payout" />
+        <result column="places" property="places" />
+        <result column="summary" property="summary" />
+        <result column="trans_date" property="transDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_time,
+        update_time,
+        balance, banknote, bill_currency, bill_income, bill_payout, country, currency, income, other_party_name, payout, places, summary, trans_date
+    </sql>
+
 </mapper>
