@@ -1,0 +1,9 @@
+[submodule "advanced-java"]
+	path = advanced-java
+	url = https://github.com/doocs/advanced-java.git
+[submodule "algorithms-java"]
+	path = algorithms-java
+	url = https://github.com/TheAlgorithms/Java.git
+[submodule "guide-java"]
+	path = guide-java
+	url = https://github.com/Snailclimb/JavaGuide.git
