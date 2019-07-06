@@ -80,17 +80,17 @@ public class MPGenerator {
         strategy.setEntityTableFieldAnnotationEnable(true);
 
         strategy.setSuperControllerClass("cn.zerohy.mp.common.BaseController");
-//        strategy.setInclude(scanner("表名"));
-        strategy.setInclude("raw_abc_record",
-                "raw_alipay_record",
-                "raw_boc_csv_export",
-                "raw_boc_csv_new",
-                "raw_boc_csv_old",
-                "raw_cmb_credit_record",
-                "raw_cmb_debit_record",
-                "raw_cmb_debit_record_old",
-                "raw_icbc_record",
-                "raw_wechat_record");
+//        strategy.setInclude("raw_abc_record",
+//                "raw_alipay_record",
+//                "raw_boc_csv_export",
+//                "raw_boc_csv_new",
+//                "raw_boc_csv_old",
+//                "raw_cmb_credit_record",
+//                "raw_cmb_debit_record",
+//                "raw_cmb_debit_record_old",
+//                "raw_icbc_record",
+//                "raw_wechat_record");
+        strategy.setInclude("account","");
         strategy.setSuperEntityColumns("id","create_time","update_time");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(mpg.getPackageInfo().getModuleName() + "_");
@@ -104,7 +104,8 @@ public class MPGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
 //        pc.setModuleName(scanner("模块名"));
-        pc.setModuleName("raw");
+//        pc.setModuleName("raw");
+        pc.setModuleName("standard");
         pc.setParent("cn.zerohy.mp");
         return pc;
     }
