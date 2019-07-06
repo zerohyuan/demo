@@ -2,10 +2,7 @@ package cn.zerohy.bug.sample;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author hyuan
@@ -74,8 +71,27 @@ public class CollectionArrayTest {
 //        System.out.println("原List添加元素:\t" + subList);//java.util.ConcurrentModificationException
 //        subList.add("g");//java.util.ConcurrentModificationException
 //        subList.remove("a");//java.util.ConcurrentModificationException
-
-
-
     }
+
+    /**
+     * 集合遍历过程中的修改
+     */
+    @Test
+    public void foreach() {
+        List<String> list = new ArrayList<>();
+        Collections.addAll(list, "a", "b", "c", "d", "e");
+
+        for (String s : list) {
+            if (Objects.equals("d", s)) {
+                list.remove(s);//移除倒数第二个不会抛异常
+            }
+        }
+
+        for (String s : list) {//java.util.ConcurrentModificationException
+            if (Objects.equals("b", s)) {
+                list.remove(s);
+            }
+        }
+    }
+
 }

@@ -78,10 +78,6 @@ public class NullPointerExceptionTest {
         hashMap.put(null, "a");
         hashMap.put("a", null);
 
-        System.out.println(hashMap);
-        hashMap.put(null, "aa");
-        System.out.println(hashMap);
-
         Map treeMap = new TreeMap();
 //        treeMap.put(null, "b");//NPE
         treeMap.put("b", null);
