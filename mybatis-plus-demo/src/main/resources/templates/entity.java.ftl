@@ -22,11 +22,8 @@ import lombok.experimental.Accessors;
  */
 <#if entityLombokModel>
 @Data
-@Builder
-@ToString(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
     <#if superEntityClass??>
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
     <#else>
 @EqualsAndHashCode(callSuper = false)
