@@ -1,6 +1,6 @@
-package cn.zerohy.mp.config;
+package cn.zerohy.mp.common.util;
 
-
+import cn.zerohy.mp.common.base.BaseEntity;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -17,10 +17,10 @@ import java.util.Scanner;
 
 /**
  * @Author hyuan
- * @Date 2019-07-01 21:43
+ * @Date 2019-07-23 21:28
  * @Description TODO
  */
-public class MPGenerator {
+public class MybatisPlusGenerator {
     /**
      * <p>
      * 读取控制台内容
@@ -43,12 +43,12 @@ public class MPGenerator {
     /**
      * RUN THIS
      */
-    public static void main(String[] args) {
+    public static void generate(String moduleName, String... tableNames) {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
         mpg.setGlobalConfig(getGlobalConfig());
         mpg.setDataSource(getDataSourceConfig());
-        mpg.setPackageInfo(getPackageInfoConfig());
+        mpg.setPackageInfo(getPackageInfoConfig(moduleName));
 
         // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
@@ -74,23 +74,16 @@ public class MPGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("cn.zerohy.mp.common.BaseEntity");
+        strategy.setSuperControllerClass("cn.zerohy.mp.common.base.BaseController");
+        strategy.setSuperServiceClass("cn.zerohy.mp.common.base.BaseService");
+        strategy.setSuperServiceImplClass("cn.zerohy.mp.common.base.BaseServiceImpl");
         strategy.setEntityLombokModel(true);
+        strategy.setSuperEntityClass(BaseEntity.class);
         strategy.setRestControllerStyle(true);
         strategy.setEntityTableFieldAnnotationEnable(true);
+        strategy.setSuperMapperClass("cn.zerohy.mp.common.base.BaseMapper");
 
-        strategy.setSuperControllerClass("cn.zerohy.mp.common.BaseController");
-//        strategy.setInclude("raw_abc_record",
-//                "raw_alipay_record",
-//                "raw_boc_csv_export",
-//                "raw_boc_csv_new",
-//                "raw_boc_csv_old",
-//                "raw_cmb_credit_record",
-//                "raw_cmb_debit_record",
-//                "raw_cmb_debit_record_old",
-//                "raw_icbc_record",
-//                "raw_wechat_record");
-        strategy.setInclude("account","");
+        strategy.setInclude(tableNames);
         strategy.setSuperEntityColumns("id","create_time","update_time");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(mpg.getPackageInfo().getModuleName() + "_");
@@ -100,12 +93,11 @@ public class MPGenerator {
         mpg.execute();
     }
 
-    private static PackageConfig getPackageInfoConfig() {
+    private static PackageConfig getPackageInfoConfig(String moduleName) {
         // 包配置
         PackageConfig pc = new PackageConfig();
 //        pc.setModuleName(scanner("模块名"));
-//        pc.setModuleName("raw");
-        pc.setModuleName("standard");
+        pc.setModuleName(moduleName);
         pc.setParent("cn.zerohy.mp");
         return pc;
     }
@@ -128,6 +120,7 @@ public class MPGenerator {
         gc.setFileOverride(true);
         gc.setBaseResultMap(true);
         gc.setBaseColumnList(true);
+        gc.setServiceName("%sService");
         gc.setOutputDir(projectPath + "/mybatis-plus-demo/src/main/java");
         gc.setAuthor("hyuan");
         gc.setOpen(false);

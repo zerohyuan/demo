@@ -1,7 +1,7 @@
 package cn.zerohy.mp.raw.mapper;
 
 import cn.zerohy.mp.raw.entity.CmbCreditRecord;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import cn.zerohy.mp.common.base.BaseMapper;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-02
+ * @since 2019-07-23
  */
 public interface CmbCreditRecordMapper extends BaseMapper<CmbCreditRecord> {
 

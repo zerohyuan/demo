@@ -2,8 +2,8 @@ package cn.zerohy.mp.raw.service.impl;
 
 import cn.zerohy.mp.raw.entity.AbcRecord;
 import cn.zerohy.mp.raw.mapper.AbcRecordMapper;
-import cn.zerohy.mp.raw.service.IAbcRecordService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import cn.zerohy.mp.raw.service.AbcRecordService;
+import cn.zerohy.mp.common.base.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-02
+ * @since 2019-07-23
  */
 @Service
-public class AbcRecordServiceImpl extends ServiceImpl<AbcRecordMapper, AbcRecord> implements IAbcRecordService {
+public class AbcRecordServiceImpl extends BaseServiceImpl<AbcRecordMapper, AbcRecord> implements AbcRecordService {
 
 }

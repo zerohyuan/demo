@@ -2,8 +2,8 @@ package cn.zerohy.mp.raw.service.impl;
 
 import cn.zerohy.mp.raw.entity.BocCsvOld;
 import cn.zerohy.mp.raw.mapper.BocCsvOldMapper;
-import cn.zerohy.mp.raw.service.IBocCsvOldService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import cn.zerohy.mp.raw.service.BocCsvOldService;
+import cn.zerohy.mp.common.base.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-02
+ * @since 2019-07-23
  */
 @Service
-public class BocCsvOldServiceImpl extends ServiceImpl<BocCsvOldMapper, BocCsvOld> implements IBocCsvOldService {
+public class BocCsvOldServiceImpl extends BaseServiceImpl<BocCsvOldMapper, BocCsvOld> implements BocCsvOldService {
 
 }

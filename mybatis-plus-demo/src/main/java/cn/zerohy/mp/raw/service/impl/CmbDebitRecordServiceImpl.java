@@ -2,8 +2,8 @@ package cn.zerohy.mp.raw.service.impl;
 
 import cn.zerohy.mp.raw.entity.CmbDebitRecord;
 import cn.zerohy.mp.raw.mapper.CmbDebitRecordMapper;
-import cn.zerohy.mp.raw.service.ICmbDebitRecordService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import cn.zerohy.mp.raw.service.CmbDebitRecordService;
+import cn.zerohy.mp.common.base.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-02
+ * @since 2019-07-23
  */
 @Service
-public class CmbDebitRecordServiceImpl extends ServiceImpl<CmbDebitRecordMapper, CmbDebitRecord> implements ICmbDebitRecordService {
+public class CmbDebitRecordServiceImpl extends BaseServiceImpl<CmbDebitRecordMapper, CmbDebitRecord> implements CmbDebitRecordService {
 
 }

@@ -1,4 +1,4 @@
-package cn.zerohy.mp.common;
+package cn.zerohy.mp.common.base;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;

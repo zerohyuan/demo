@@ -1,9 +1,9 @@
 package cn.zerohy.mp.raw.entity;
 
-import cn.zerohy.mp.common.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import cn.zerohy.mp.common.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -14,13 +14,10 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-02
+ * @since 2019-07-23
  */
 @Data
-@Builder
 @ToString(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("raw_cmb_debit_record")
