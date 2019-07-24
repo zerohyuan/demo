@@ -1,20 +1,28 @@
-# Univocity-parsers解析csv文件
-
-> Univocity-parsers是针对CSV/TSV/定宽文本文件解析的开源项目，优点是功能齐全，api简洁。
+package cn.zerohy.univocity.parsers.service.univocity.parser;
 
 
+import cn.zerohy.univocity.parsers.service.Parser;
+import com.univocity.parsers.common.processor.BeanListProcessor;
+import com.univocity.parsers.csv.CsvParser;
+import com.univocity.parsers.csv.CsvParserSettings;
 
-```xml
-        <dependency>
-            <groupId>com.univocity</groupId>
-            <artifactId>univocity-parsers</artifactId>
-            <version>2.8.1</version>
-        </dependency>
-```
+import java.lang.reflect.ParameterizedType;
+import java.nio.charset.Charset;
+import java.nio.file.Path;
+import java.util.List;
 
+/**
+ * @Author hyuan
+ * @Date 2019-05-02 14:44
+ * @Description TODO
+ */
+public abstract class AbstractCsvParser<T> implements Parser<T> {
 
+    protected abstract Integer getNumOfRowsToSkip();
 
-```java
+    protected abstract Charset getCharset();
+
+    @Override
     public List<T> parse(Path path) {
         CsvParserSettings csvParserSettings = new CsvParserSettings();
         Integer numOfRowsToSkip = getNumOfRowsToSkip();
@@ -33,5 +41,6 @@
         parseAfter(list);
         return list;
     }
-```
 
+    protected abstract void parseAfter(List<T> list);
+}
