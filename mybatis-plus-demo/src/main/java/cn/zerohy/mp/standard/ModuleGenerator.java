@@ -10,6 +10,6 @@ import cn.zerohy.mp.common.util.MybatisPlusGenerator;
 public class ModuleGenerator {
 
     public static void main(String[] args) {
-        MybatisPlusGenerator.generate("standard","account");
+        MybatisPlusGenerator.generate("standard","std_account", "std_consume_record");
     }
 }

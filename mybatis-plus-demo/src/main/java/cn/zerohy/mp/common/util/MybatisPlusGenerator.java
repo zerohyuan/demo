@@ -87,6 +87,7 @@ public class MybatisPlusGenerator {
         strategy.setSuperEntityColumns("id","create_time","update_time");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(mpg.getPackageInfo().getModuleName() + "_");
+        strategy.setTablePrefix("raw", "std");
         mpg.setStrategy(strategy);
         // 选择 freemarker 引擎需要指定如下加，注意 pom 依赖必须有！
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());

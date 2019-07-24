@@ -9,7 +9,7 @@ import cn.zerohy.mp.common.base.BaseMapper;
  * </p>
  *
  * @author hyuan
- * @since 2019-07-23
+ * @since 2019-07-24
  */
 public interface AbcRecordMapper extends BaseMapper<AbcRecord> {
 

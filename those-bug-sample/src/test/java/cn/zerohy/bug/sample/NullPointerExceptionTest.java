@@ -51,6 +51,12 @@ public class NullPointerExceptionTest {
         }
     }
 
+    @Test
+    public void tanslate() {
+        String.valueOf(null);
+
+    }
+
     /**
      * 字符串判等
      */
