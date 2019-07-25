@@ -4,6 +4,8 @@ import lombok.Getter;
 import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -41,13 +43,18 @@ public class NullPointerExceptionTest {
             private String name;
         }
 
-        List<User> userList = Arrays.asList(new User(), new User());
-        if (!CollectionUtils.isEmpty(userList)) {
-            for (User user : userList) {
-                if (user.getName().contains("tom")) {
-                    //do something
-                }
-            }
+//        List<User> userList = Arrays.asList(new User(), new User());
+//        if (!CollectionUtils.isEmpty(userList)) {
+//            for (User user : userList) {
+//                if (user.getName().contains("tom")) {
+//                    //do something
+//                }
+//            }
+//        }
+
+        List<User> userList1 = Arrays.asList(null);
+        for (User user : userList1) {
+            System.out.println(user.getName());
         }
     }
 
@@ -55,6 +62,16 @@ public class NullPointerExceptionTest {
     public void tanslate() {
         String.valueOf(null);
 
+    }
+
+    @Test
+    public void parse() {
+        List list = new ArrayList<String>();
+        list.add(null);
+
+        for (Object o : list) {
+            System.out.println(o);
+        }
     }
 
     /**
